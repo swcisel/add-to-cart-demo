@@ -15,7 +15,7 @@ const AuthenticatedRoute = ({ component: Component, path }) => {
 };
 
 AuthenticatedRoute.propTypes = {
-  component: PropTypes.element,
+  component: PropTypes.func,
   path: PropTypes.string,
 };
 

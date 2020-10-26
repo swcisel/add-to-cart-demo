@@ -1,0 +1,10 @@
+
+.main-container {
+  width: 80%;
+  margin: auto;
+  .tile-container {
+    display:flex;
+    flex-direction: row;
+  }
+
+}

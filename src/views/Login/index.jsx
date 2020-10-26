@@ -15,6 +15,8 @@ import { Formik, Form, ErrorMessage } from "formik";
 import authContext from "context/Auth/AuthContext";
 import { loginFormSchema } from "./schemas";
 
+import styles from "./style.scss";
+
 const initialFormValues = {
   username: "",
   password: "",
@@ -27,14 +29,14 @@ export const LoginView = () => {
     AuthContext.login({ username, password });
 
   return (
-    <Container>
+    <Container className="login-form-container">
+      <h1>Welcome!</h1>
       <Formik
         initialValues={initialFormValues}
         validationSchema={loginFormSchema}
         onSubmit={handleLogin}
         validateOnBlur
         validateOnSubmit
-        validateOnChange
       >
         {({ values, handleChange }) => (
           <Form>
@@ -43,18 +45,22 @@ export const LoginView = () => {
               placeholder="Email Address"
               onChange={handleChange}
             />
+            <div className="error-message">
+              <ErrorMessage name="username" />
+            </div>
             <Input
               name="password"
               type="password"
               placeholder="Password"
               onChange={handleChange}
             />
-            <div>
-              <ErrorMessage name="username" />
+            <div className="error-message">
               <ErrorMessage name="password" />
             </div>
-            Note: Any valid email address and password are accepted.
-            <button type="submit">submit</button>
+            <button type="submit">Login</button>
+            <div className="info-text">
+              (Any valid email address, and any password are accepted)
+            </div>
           </Form>
         )}
       </Formik>

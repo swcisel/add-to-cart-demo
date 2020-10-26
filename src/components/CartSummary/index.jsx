@@ -6,6 +6,8 @@ import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as R from "ramda";
 
+import styles from "./style.scss";
+
 const CartSummary = () => {
   const [cartSummaryVisible, setCartSummaryVisible] = useState(false);
   const CartContext = useContext(cartContext);
@@ -26,12 +28,19 @@ const CartSummary = () => {
 
   return (
     <>
-      <Button onClick={() => setCartSummaryVisible(true)}>
+      <Button
+        onClick={() => setCartSummaryVisible(true)}
+        className="cart-summary-button"
+      >
         <div>Cart Total:</div>
         <div>{priceTotalString}</div>
       </Button>
-      <Modal isOpen={cartSummaryVisible} toggle={toggleCartSummaryVisible}>
-        <Button onClick={toggleCartSummaryVisible}>Continue Shopping</Button>
+      <Modal
+        isOpen={cartSummaryVisible}
+        toggle={toggleCartSummaryVisible}
+        className="cart-summary-modal"
+      >
+        <Button onClick={toggleCartSummaryVisible}>Hide</Button>
         <ModalHeader>
           <h2>Cart Details</h2>
         </ModalHeader>
@@ -39,17 +48,20 @@ const CartSummary = () => {
           {Object.entries(CartContext.items).length === 0 ? (
             <p>There are currently no items in your cart.</p>
           ) : (
-            <>
+            <div className="cart-summary-list">
               {R.values(CartContext.items).map((item) => (
-                <>
+                <div className="cart-summary-row">
                   <CardImg src={item.image} width={100} height={100} />
-                  <div>{item.name}</div>
-                  <div>{item.count}</div>
-                </>
+                  <div>
+                    <div className="item-name">{item.name}</div>
+                    <div className="item-quantity">Quantity: {item.count}</div>
+                  </div>
+                </div>
               ))}
-              <div>Total: </div>
-              <div>{priceTotalString}</div>
-            </>
+              <div className="cart-summary-total">
+                Total: {priceTotalString}
+              </div>
+            </div>
           )}
         </ModalBody>
       </Modal>

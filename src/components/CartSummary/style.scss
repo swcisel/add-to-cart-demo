@@ -1,0 +1,34 @@
+
+.cart-summary-list{
+  padding: 1em;
+  .cart-summary-row {
+    border-bottom: 1px solid #CCC;
+    padding: 4px;
+    width: 80%;
+    flex-direction: row;
+    display: flex;
+    margin: 6px;
+    overflow: hidden;
+    .card-img {
+      margin: 0 10px;
+    }
+    .item-name {
+      font-size: 1.2em;
+      width: 100%;
+    }
+  }
+  .cart-summary-total {
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 2em;
+  }
+  .cart-summary-button {
+    
+  }
+}
+
+ .cart-summary-modal {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(100,100,100,0.3);
+  }

@@ -35,6 +35,4 @@ CartState.propTypes = {
   ]).isRequired,
 };
 
-CartState.prop;
-
 export default CartState;
