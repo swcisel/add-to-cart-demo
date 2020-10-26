@@ -15,7 +15,7 @@ const UnauthenticatedRoute = ({ component: Component, path }) => {
 };
 
 UnauthenticatedRoute.propTypes = {
-  component: PropTypes.element,
+  component: PropTypes.func,
   path: PropTypes.string,
 };
 

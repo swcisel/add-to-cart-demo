@@ -18,6 +18,8 @@ import {
   faPlusSquare,
 } from "@fortawesome/free-solid-svg-icons";
 
+import styles from "./Tile.scss";
+
 import cartContext from "context/Cart/CartContext";
 
 export const Tile = ({ data }) => {
@@ -41,38 +43,36 @@ export const Tile = ({ data }) => {
   };
 
   return (
-    <Card style={{ backgroundColor: "gray", width: 100 }}>
+    <Card>
       <CardImg src={data.image} width={100} height={100} />
       <CardHeader>
         <h3>{data.name}</h3>
       </CardHeader>
       <h4>{data.price}</h4>
-      {numberInCart > 0 ? (
-        <Container>
-          <Col>
+      <Row>
+        {numberInCart > 0 ? (
+          <>
             <Button onClick={handleDecrementClick}>
               <FontAwesomeIcon icon={faMinusSquare} />
             </Button>
-          </Col>
-          <Col>
             <Input
               name="quantity"
               type="number"
               value={numberInCart}
               onChange={handleQuantityChange}
             ></Input>
-          </Col>
-          <Col>
             <Button color="red" size="lg" block onClick={handleIncrementClick}>
               <FontAwesomeIcon icon={faPlusSquare} />
             </Button>
-          </Col>
-        </Container>
-      ) : (
-        <Button onClick={handleIncrementClick}>
-          <FontAwesomeIcon icon={faCartPlus} />
-        </Button>
-      )}
+          </>
+        ) : (
+          <div offset={3} className="col col-md-offset-3">
+            <Button onClick={handleIncrementClick}>
+              <FontAwesomeIcon icon={faCartPlus} />
+            </Button>
+          </div>
+        )}
+      </Row>
     </Card>
   );
 };

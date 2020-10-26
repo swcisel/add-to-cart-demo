@@ -7,6 +7,8 @@ import CartSummary from "components/CartSummary";
 
 import CartState from "context/Cart/CartState";
 
+import styles from "./style.scss";
+
 export const MainView = () => {
   const [itemList, setItemList] = useState([]);
 
@@ -26,12 +28,18 @@ export const MainView = () => {
   }, []);
 
   return (
-    <CartState>
-      <CartSummary />
-      {itemList.map((item) => (
-        <Tile data={item} key={`item-tile-${item.code}`} />
-      ))}
-    </CartState>
+    <Container className="main-container">
+      <CartState>
+        <>
+          <CartSummary />
+          <div className="tile-container">
+            {itemList.map((item) => (
+              <Tile data={item} key={`item-tile-${item.code}`} />
+            ))}
+          </div>
+        </>
+      </CartState>
+    </Container>
   );
 };
 

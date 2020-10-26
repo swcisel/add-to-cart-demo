@@ -1,0 +1,39 @@
+.login-form-container {
+  width: 25%;
+  height: 20%;
+  align-self: center;
+  margin: auto;
+  margin-top: 10em;
+  // background-color: gray;
+  border: 1px solid #CCC;
+  border-radius: 4px;
+  padding: 2em;
+
+  h1 {
+    text-align: center;
+  }
+  
+  input {
+    margin: 6px;
+    width: 20em;
+    align-self: center;
+  }
+
+  button {
+    padding: 8px;
+    margin: 10px 6px;
+    font-weight: 500;
+  }
+
+  .info-text {
+    text-align: center;
+    font-size: 0.9em;
+    margin: 1em;
+  }
+
+  .error-message {
+    height: 1em;
+    padding: 6px;
+    color: #f44;
+  }
+}
