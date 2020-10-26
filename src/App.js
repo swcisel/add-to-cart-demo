@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 
-function App() {
+import Main from "views/Main";
+import Login from "views/Login";
+import Cart from "views/Cart";
+import NoMatch from "views/NoMatch";
+
+import AuthState from "context/Auth/AuthState";
+import AuthenticatedRoute from "components/AuthenticatedRoute";
+import UnauthenticatedRoute from "components/UnauthenticatedRoute";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthState>
+      <Router>
+        <Switch>
+          <AuthenticatedRoute exact path="/" component={Main} />
+          <AuthenticatedRoute exact path="/cart" component={Cart} />
+          <UnauthenticatedRoute exact path="/login" component={Login} />
+          <Route component={NoMatch} />
+        </Switch>
+      </Router>
+    </AuthState>
   );
-}
+};
 
 export default App;
